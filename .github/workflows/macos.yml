@@ -36,7 +36,6 @@ jobs:
         cmake --build build --config Release
         cmake --build build --target install --config Release
         cd ../modern-cpp-template
-
     - name: configure
       run: cmake -Bbuild -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/$INSTALL_LOCATION
       
@@ -47,7 +46,5 @@ jobs:
       run: |
         cd build
         ctest -C $BUILD_TYPE -VV
-
     - name: install project
       run: cmake --build build --target install --config Release 
-
