@@ -45,6 +45,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+out/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -366,3 +367,4 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+

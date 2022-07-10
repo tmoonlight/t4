@@ -8,7 +8,8 @@ set(exe_sources
 )
 
 set(headers
-    include/project/tmp.hpp
+    include/project/tmp.h
+	#include/catch.hpp
 )
 
 set(test_sources

@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.16)
 
 #
 # Project details
 #
 
 project(
-  "Project"
+  t4
   VERSION 0.1.0
   LANGUAGES CXX
 )
@@ -153,7 +153,7 @@ verbose_message("Applied compiler warnings. Using standard ${CMAKE_CXX_STANDARD}
 include(cmake/Doxygen.cmake)
 
 #
-# Model project dependencies
+# 添加项目依赖的几种模式
 #
 
 # Identify and link with the specific "packages" the project uses
@@ -175,16 +175,16 @@ include(cmake/Doxygen.cmake)
 #  )
 #endif()
 
-# For Windows, it is necessary to link with the MultiThreaded library.
-# Depending on how the rest of the project's dependencies are linked, it might be necessary
-# to change the line to statically link with the library.
+# 对于Windows，有必要与多线程库链接。
+# 取决于项目的其他依赖关系是如何链接的，可能需要
+# 改变这一行以静态链接该库。
 #
 # This is done as follows:
 #
 # set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 #
-# On Linux and Mac this variable is ignored. If any issues rise from it, try commenting it out
-# and letting CMake decide how to link with it.
+# 在Linux和Mac上，这个变量被忽略。如果有任何问题出现，可以试着把它注释掉
+# 并让CMake决定如何与之链接。
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
 
 verbose_message("Successfully added all dependencies and linked against them.")
@@ -193,7 +193,7 @@ verbose_message("Successfully added all dependencies and linked against them.")
 # Set the build/user include directories
 #
 
-# Allow usage of header files in the `src` directory, but only for utilities
+# 允许在`src`目录下使用.h头文件，但仅用于 utilities公共库
 if(${PROJECT_NAME}_BUILD_HEADERS_ONLY)
   target_include_directories(
     ${PROJECT_NAME}
@@ -225,7 +225,7 @@ endif()
 message(STATUS "Finished setting up include directories.")
 
 #
-# Provide alias to library for
+# Provide alias to library for（设置库的别名）
 #
 
 if(${PROJECT_NAME}_BUILD_EXECUTABLE)
@@ -239,8 +239,8 @@ verbose_message("Project is now aliased as ${PROJECT_NAME}::${PROJECT_NAME}.\n")
 #
 # Format the project using the `clang-format` target (i.e: cmake --build build --target clang-format)
 #
-
-add_clang_format_target()
+# noneed
+#add_clang_format_target()
 
 #
 # Install library for easy downstream inclusion
@@ -361,3 +361,4 @@ if(${PROJECT_NAME}_ENABLE_UNIT_TESTING)
   message(STATUS "Build unit tests for the project. Tests should always be found in the test folder\n")
   add_subdirectory(test)
 endif()
+
