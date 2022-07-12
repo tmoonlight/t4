@@ -157,23 +157,26 @@ include(cmake/Doxygen.cmake)
 #
 
 # Identify and link with the specific "packages" the project uses
+# 使用特定的包
 #find_package(package_name package_version REQUIRED package_type [other_options])
-#target_link_libraries(
-#  ${PROJECT_NAME}
-#  PUBLIC
-#    dependency1 ...
-#  PRIVATE
-#    dependency2 ...
-#    ${PROJECT_NAME}_PROJECT_OPTIONS
-#    ${PROJECT_NAME}_PROJECT_WARNINGS
-#)
-#if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
-#  target_link_libraries(
-#    ${PROJECT_NAME}_LIB
-#    PUBLIC
-#      dependency1 ...
-#  )
-#endif()
+find_package(zlib 1.2.11 REQUIRED)
+# 使用
+target_link_libraries(
+  ${PROJECT_NAME}
+  PUBLIC
+    zlib
+  #PRIVATE
+  #  dependency2 ...
+  #  ${PROJECT_NAME}_PROJECT_OPTIONS
+  #  ${PROJECT_NAME}_PROJECT_WARNINGS
+)
+if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
+  target_link_libraries(
+    ${PROJECT_NAME}_LIB
+    PUBLIC
+      zlib
+  )
+endif()
 
 # 对于Windows，有必要与多线程库链接。
 # 取决于项目的其他依赖关系是如何链接的，可能需要
