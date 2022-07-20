@@ -9,3 +9,8 @@
 
 #endif  // @PROJECT_NAME_UPPERCASE@_VERSION_H_
 
+
+//@testvar1@,
+//@testvar2@,
+//@testvar3@,
+//@testvar4@.

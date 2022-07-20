@@ -153,18 +153,20 @@ verbose_message("Applied compiler warnings. Using standard ${CMAKE_CXX_STANDARD}
 include(cmake/Doxygen.cmake)
 
 #
-# Ìí¼ÓÏîÄ¿ÒÀÀµµÄ¼¸ÖÖÄ£Ê½
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ä£Ê½
 #
 
 # Identify and link with the specific "packages" the project uses
-# Ê¹ÓÃÌØ¶¨µÄ°ü
+# Ê¹ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½Ä°ï¿½
 #find_package(package_name package_version REQUIRED package_type [other_options])
-find_package(zlib 1.2.11 REQUIRED)
-# Ê¹ÓÃ
+#find_package(zlib 1.2.11 REQUIRED)
+#find_package(libuv REQUIRED)
+# Ê¹ï¿½ï¿½
 target_link_libraries(
   ${PROJECT_NAME}
   PUBLIC
-    zlib
+  
+  #  zlib
   #PRIVATE
   #  dependency2 ...
   #  ${PROJECT_NAME}_PROJECT_OPTIONS
@@ -174,20 +176,20 @@ if(${PROJECT_NAME}_BUILD_EXECUTABLE AND ${PROJECT_NAME}_ENABLE_UNIT_TESTING)
   target_link_libraries(
     ${PROJECT_NAME}_LIB
     PUBLIC
-      zlib
+    #  zlib
   )
 endif()
 
-# ¶ÔÓÚWindows£¬ÓÐ±ØÒªÓë¶àÏß³Ì¿âÁ´½Ó¡£
-# È¡¾öÓÚÏîÄ¿µÄÆäËûÒÀÀµ¹ØÏµÊÇÈçºÎÁ´½ÓµÄ£¬¿ÉÄÜÐèÒª
-# ¸Ä±äÕâÒ»ÐÐÒÔ¾²Ì¬Á´½Ó¸Ã¿â¡£
+# ï¿½ï¿½ï¿½ï¿½Windowsï¿½ï¿½ï¿½Ð±ï¿½Òªï¿½ï¿½ï¿½ï¿½ß³Ì¿ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½
+# È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª
+# ï¿½Ä±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ô¾ï¿½Ì¬ï¿½ï¿½ï¿½Ó¸Ã¿â¡£
 #
 # This is done as follows:
 #
 # set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 #
-# ÔÚLinuxºÍMacÉÏ£¬Õâ¸ö±äÁ¿±»ºöÂÔ¡£Èç¹ûÓÐÈÎºÎÎÊÌâ³öÏÖ£¬¿ÉÒÔÊÔ×Å°ÑËü×¢ÊÍµô
-# ²¢ÈÃCMake¾ö¶¨ÈçºÎÓëÖ®Á´½Ó¡£
+# ï¿½ï¿½Linuxï¿½ï¿½Macï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ï¿½×¢ï¿½Íµï¿½
+# ï¿½ï¿½ï¿½ï¿½CMakeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Ó¡ï¿½
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
 
 verbose_message("Successfully added all dependencies and linked against them.")
@@ -196,7 +198,7 @@ verbose_message("Successfully added all dependencies and linked against them.")
 # Set the build/user include directories
 #
 
-# ÔÊÐíÔÚ`src`Ä¿Â¼ÏÂÊ¹ÓÃ.hÍ·ÎÄ¼þ£¬µ«½öÓÃÓÚ utilities¹«¹²¿â
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½`src`Ä¿Â¼ï¿½ï¿½Ê¹ï¿½ï¿½.hÍ·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ utilitiesï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 if(${PROJECT_NAME}_BUILD_HEADERS_ONLY)
   target_include_directories(
     ${PROJECT_NAME}
@@ -228,7 +230,7 @@ endif()
 message(STATUS "Finished setting up include directories.")
 
 #
-# Provide alias to library for£¨ÉèÖÃ¿âµÄ±ðÃû£©
+# Provide alias to library forï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
 #
 
 if(${PROJECT_NAME}_BUILD_EXECUTABLE)
@@ -281,7 +283,10 @@ install(
 #
 # Add version header
 #
-
+set(testvar1 "ceshi111")
+set(testvar2 "cedsfdsfsdfsfdshi111")
+set(testvar3 "ceshi1fdgfdgdfg11")
+set(testvar4 "ceshfdsfsdfi111")
 configure_file(
   ${CMAKE_CURRENT_LIST_DIR}/cmake/version.hpp.in
   include/${PROJECT_NAME_LOWERCASE}/version.hpp

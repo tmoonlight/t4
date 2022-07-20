@@ -1,9 +1,14 @@
+message("++++++enabled conan.cmake..11begin")
 if(${PROJECT_NAME}_ENABLE_CONAN)
   #
   # Setup Conan requires and options here:
   #
-
-  set(${PROJECT_NAME}_CONAN_REQUIRES "")
+  
+  message("enabled conan.cmake..")
+  set(${PROJECT_NAME}_CONAN_REQUIRES 
+  "libuv/1.34.2"
+  "catch2/3.1.0"
+  )
   set(${PROJECT_NAME}_CONAN_OPTIONS "")
 
   #
@@ -29,6 +34,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
     https://api.bintray.com/conan/bincrafters/public-conan
   )
 
+  message("+++++++{${PROJECT_NAME}_CONAN_REQUIRES}")
   conan_cmake_run(
     REQUIRES
     ${${PROJECT_NAME}_CONAN_REQUIRES}
