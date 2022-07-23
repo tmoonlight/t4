@@ -1,52 +1,32 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <uv.h>
+#include <event2/event.h>
 
 #include <iostream>
+#include "spdlog/common.h"
+#include "spdlog/sinks/daily_file_sink.h"
+#include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/spdlog.h"
+#include "spdlog/async.h" //support for async logging.
+#include "project/ship.h"
+using namespace std;
 
-int64_t counter = 0;
-
-void wait_for_a_while(uv_idle_t* handle)
-{
-  counter++;
-
-  if (counter >= 10e6)
-    uv_idle_stop(handle);
-}
 int main()
 {
-  uv_idle_t idler;
+ 
+  event_base *ebase = event_base_new();
+  event_config *cfg = event_config_new();
 
-  uv_idle_init(uv_default_loop(), &idler);
-  uv_idle_start(&idler, wait_for_a_while);
 
-  printf("Idling...\n");
-  uv_run(uv_default_loop(), UV_RUN_DEFAULT);
-
-  uv_loop_close(uv_default_loop());
-  return 0;
-  // return 0;
-  int x = 1;
-  int y = 0;
-  int z = 2;
-  int a = -1;
-  if (x)
-  {
-    printf("x");
-  }
-  if (y)
-  {
-    printf("y");
-  }
-  if (z)
-  {
-    printf("z");
-  }
-  if (a)
-  {
-    printf("a");
-  }
-
-  // printf("test");
+  auto my_logger = spdlog::basic_logger_mt("basic_logger", "logs/basic.txt");
+  auto logger = spdlog::daily_logger_mt("daily_logger", "logs/daily.txt", 2, 30);
+  auto async_file = spdlog::basic_logger_mt<spdlog::async_factory>("async_file_logger", "logs/async_log.txt");
+  
+  spdlog::info("welcome!!!");
+  //.async_file.
+  my_logger->error("testerror");
+  logger->error("testerror333");
+  async_file->error("output");
+  //logger
+  event_config_free(cfg);
+  event_base_free(ebase);
   return 0;
 }

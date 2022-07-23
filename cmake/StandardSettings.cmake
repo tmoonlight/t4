@@ -25,12 +25,12 @@ message("+++++++++loaded conan")
 #
 # Currently supporting: GoogleTest, Catch2.
 
-option(${PROJECT_NAME}_ENABLE_UNIT_TESTING "Enable unit tests for the projects (from the `test` subfolder)." on)
+option(${PROJECT_NAME}_ENABLE_UNIT_TESTING "Enable unit tests for the projects (from the `test` subfolder)." OFF)
 
 option(${PROJECT_NAME}_USE_GTEST "Use the GoogleTest project for creating unit tests." OFF)
 option(${PROJECT_NAME}_USE_GOOGLE_MOCK "Use the GoogleMock project for extending the unit tests." OFF)
 
-option(${PROJECT_NAME}_USE_CATCH2 "Use the Catch2 project for creating unit tests." ON)
+option(${PROJECT_NAME}_USE_CATCH2 "Use the Catch2 project for creating unit tests." OFF)
 
 #
 # Static analyzers

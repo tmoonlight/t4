@@ -165,7 +165,7 @@ include(cmake/Doxygen.cmake)
 target_link_libraries(
   ${PROJECT_NAME}
   PUBLIC
-  
+   ${CONAN_LIBS}
   #  zlib
   #PRIVATE
   #  dependency2 ...

@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <uv.h>
+
+#include <iostream>
+#include "spdlog/spdlog.h"
+
+int64_t counter = 0;
+uv_fs_cb FsHandle;
+void wait_for_a_while(uv_idle_t* handle)
+{
+  spdlog::info("test %d",counter);
+  counter++;
+
+  if (counter >= 10e6)
+    uv_idle_stop(handle);
+}
+int main()
+{
+FsHandle = [](uv_fs_t* req){
+    // assert(req == &req);
+    if (req->result >= 0) {
+        // iov = uv_buf_init(buffer, sizeof(buffer));
+        // uv_fs_read(uv_default_loop(), &read_req, req->result,
+        //            &iov, 1, -1, on_read);
+    }
+    else {
+        fprintf(stderr, "error opening file: %s\n", uv_strerror((int)req->result));
+    }
+
+};
+
+
+  getchar();
+  uv_idle_t idler;
+
+  uv_loop_t* dloop = uv_default_loop();
+  int uve1 = uv_idle_init(dloop, &idler);
+  int uve2 = uv_idle_start(&idler, wait_for_a_while);
+  //c风格的接口提返回模式
+  uv_fs_t fst;
+  uv_fs_open(dloop, &fst, "c:/2.txt", O_RDWR, S_IWRITE | S_IREAD, FsHandle);
+  printf("Idling...\n");
+  uv_run(dloop, UV_RUN_DEFAULT);
+  // open_req
+
+  int libuve3 = uv_loop_close(dloop);
+  std::cout << "1erroris:" << uv_strerror(uve1) << std::endl;
+  std::cout << "2erroris:" << uv_strerror(uve2) << std::endl;
+  std::cout << "3erroris:" << uv_strerror(libuve3) << std::endl;
+  // uv_strerror()
+  // uv_err_name()
+  return 0;
+  // // return 0;
+  // int x = 1;
+  // int y = 0;
+  // int z = 2;
+  // int a = -1;
+  // if (x)
+  // {
+  //   printf("x");
+  // }
+  // if (y)
+  // {
+  //   printf("y");
+  // }
+  // if (z)
+  // {
+  //   printf("z");
+  // }
+  // if (a)
+  // {
+  //   printf("a");
+  // }
+
+  // printf("test");
+  // return 0;
+}

@@ -1,38 +1,43 @@
-message("++++++enabled conan.cmake..11begin")
+#message("++++++enabled conan.cmake..11begin${${PROJECT_NAME}_ENABLE_CONAN}")
 if(${PROJECT_NAME}_ENABLE_CONAN)
   #
   # Setup Conan requires and options here:
   #
   
-  message("enabled conan.cmake..")
+  message("enabled conan.cmake..������")
   set(${PROJECT_NAME}_CONAN_REQUIRES 
-  "libuv/1.34.2"
-  "catch2/3.1.0"
+  #"libuv/1.34.2"
+  #"zlib/1.2.12"
+  #"poco/1.12.1"
+  "spdlog/1.9.2"
+  #"catch2/3.1.0"
+  "libevent/2.1.12"
   )
   set(${PROJECT_NAME}_CONAN_OPTIONS "")
 
   #
   # If `conan.cmake` (from https://github.com/conan-io/cmake-conan) does not exist, download it.
+  # copy from local folder from now on.
   #
-  if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
-    message(
-      STATUS
-      "Downloading conan.cmake from https://github.com/conan-io/cmake-conan..."
-    )
-    file(
-      DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.15/conan.cmake"
-      "${CMAKE_BINARY_DIR}/conan.cmake"
-    )
-    message(STATUS "Cmake-Conan downloaded succesfully.")
-  endif()
+#  if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+#    message(
+#      STATUS
+#      "Downloading conan.cmake from https://github.com/conan-io/cmake-conan..."
+#    )
+#    file(
+#      DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.15/conan.cmake"
+#      "${CMAKE_BINARY_DIR}/conan.cmake"
+#    )
+#    message(STATUS "Cmake-Conan downloaded succesfully.")
+#  endif()
 
-  include(${CMAKE_BINARY_DIR}/conan.cmake)
+  include(cmake/3rd-cmake/conan.cmake)
 
-  conan_add_remote(
-    NAME bincrafters
-    URL
-    https://api.bintray.com/conan/bincrafters/public-conan
-  )
+ conan_add_remote(
+   NAME c23
+   URL
+   http://23.234.225.112:8082/artifactory/api/conan/conan
+ )
 
   message("+++++++{${PROJECT_NAME}_CONAN_REQUIRES}")
   conan_cmake_run(
@@ -47,6 +52,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
   )
 
   conan_basic_setup()
-
+  message("-=-=-=-=-${CMAKE_TARGETS}")
+  message("++++++++++test::: ${CONAN_LIBS}")
   verbose_message("Conan is setup and all requires have been installed.")
 endif()
