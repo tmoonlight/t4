@@ -50,8 +50,9 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
     ${${PROJECT_NAME}_CONAN_OPTIONS}
     BASIC_SETUP
     CMAKE_TARGETS # Individual targets to link to
+    SETTINGS compiler.cppstd=17
     BUILD
-    missing
+    missing # build not prebuild pkg
   )
 
   conan_basic_setup()
