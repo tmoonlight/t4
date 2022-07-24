@@ -13,7 +13,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
   "spdlog/1.9.2"
   #"catch2/3.1.0"
   "libevent/2.1.12"
-  "openssl/1.1.1o"
+  "openssl/1.1.1q"
   )
   set(${PROJECT_NAME}_CONAN_OPTIONS "")
   #
@@ -28,7 +28,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
 #      "Downloading conan.cmake from https://github.com/conan-io/cmake-conan..."
 #    )
 #    file(
-#      DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.15/conan.cmake"
+#      DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.18/conan.cmake"
 #      "${CMAKE_BINARY_DIR}/conan.cmake"
 #    )
 #    message(STATUS "Cmake-Conan downloaded succesfully.")
@@ -50,7 +50,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
     ${${PROJECT_NAME}_CONAN_OPTIONS}
     BASIC_SETUP
     CMAKE_TARGETS # Individual targets to link to
-    SETTINGS compiler.cppstd=17
+    #SETTINGS compiler.cppstd=17
     BUILD
     missing # build not prebuild pkg
   )
