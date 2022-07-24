@@ -7,11 +7,13 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/async.h" //support for async logging.
 #include "project/ship.h"
+#include "project/frigate.h";
 using namespace std;
 
 int main()
 {
  
+	Frigate dri;
   event_base *ebase = event_base_new();
   event_config *cfg = event_config_new();
 
