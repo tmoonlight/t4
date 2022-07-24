@@ -4,17 +4,20 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
   # Setup Conan requires and options here:
   #
   
-  message("enabled conan.cmake..������")
+  message("enabled conan.cmake..cool")
+  set(${CONAN_DISABLE_CHECK_COMPILER} TRUE)
   set(${PROJECT_NAME}_CONAN_REQUIRES 
   #"libuv/1.34.2"
   #"zlib/1.2.12"
-  #"poco/1.12.1"
+  "poco/1.12.1"
   "spdlog/1.9.2"
   #"catch2/3.1.0"
   "libevent/2.1.12"
+  "openssl/1.1.1o"
   )
   set(${PROJECT_NAME}_CONAN_OPTIONS "")
-
+  #
+  set(CONAN_LOCAL_CMAKESOURCE cmake/3rd-cmake/conan.cmake)
   #
   # If `conan.cmake` (from https://github.com/conan-io/cmake-conan) does not exist, download it.
   # copy from local folder from now on.
@@ -31,7 +34,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
 #    message(STATUS "Cmake-Conan downloaded succesfully.")
 #  endif()
 
-  include(cmake/3rd-cmake/conan.cmake)
+  include("${CONAN_LOCAL_CMAKESOURCE}")
 
  conan_add_remote(
    NAME c23
