@@ -13,7 +13,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
   "spdlog/1.9.2"
   #"catch2/3.1.0"
   "libevent/2.1.12"
-  "openssl/1.1.1q"
+  "openssl/1.1.1d"
   )
   set(${PROJECT_NAME}_CONAN_OPTIONS "")
   #
