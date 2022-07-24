@@ -4,8 +4,8 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
   # Setup Conan requires and options here:
   #
   
-  message("enabled conan.cmake..cool")
-  set(${CONAN_DISABLE_CHECK_COMPILER} TRUE)
+  message("enabled conan.cmake..cool ...11${CONAN_DISABLE_CHECK_COMPILER}")
+  set(CONAN_DISABLE_CHECK_COMPILER True CACHE BOOL "" FORCE )
   set(${PROJECT_NAME}_CONAN_REQUIRES 
   #"libuv/1.34.2"
   #"zlib/1.2.12"
@@ -59,3 +59,6 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
   message("++++++++++test::: ${CONAN_LIBS}")
   verbose_message("Conan is setup and all requires have been installed.")
 endif()
+
+
+  message("enabled conan.cmake..cool ...11${CONAN_DISABLE_CHECK_COMPILER}")
