@@ -1,5 +1,4 @@
-#ifndef  VAR_SHIP
-#define VARSHIP
+#pragma once
 
 class Ship
 {
@@ -7,5 +6,3 @@ class Ship
   Ship();
   ~Ship();
 };
-
-#endif  //  VAR_SHIP
