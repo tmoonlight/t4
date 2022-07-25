@@ -32,14 +32,17 @@ jobs:
     - name: clean remote
       run: conan remote clean
 
+    - name: conan config
+      run: conan config set general.revisions_enabled=1
+
+    - name: login repo
+      run: conan user admin -p ${{ secrets.CONANPASS2 }}
+ 
     - name: configure
       run: cmake -Bbuild -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_INSTALL_PREFIX="$HOME/$env:INSTALL_LOCATION"
       
     - name: build
       run: cmake --build build --config "$env:BUILD_TYPE" -j4
-
-    - name: login repo
-      run: conan user admin -p ${{ secrets.CONANPASS2 }}
 
     - name: upload conan prebuild packages
       run: conan upload --all -c "*"
