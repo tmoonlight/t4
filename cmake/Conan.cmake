@@ -35,7 +35,6 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
 #  endif()
 
   include("${CONAN_LOCAL_CMAKESOURCE}")
-
  conan_add_remote(
    NAME c23
    URL

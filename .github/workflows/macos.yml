@@ -28,7 +28,10 @@ jobs:
 
     - name: Get Conan
       uses: turtlebrowser/get-conan@v1.0
-      
+
+    - name: clean remote
+      run: conan remote clean
+
     - name: configure
       run: cmake -Bbuild -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_INSTALL_PREFIX="$HOME/$env:INSTALL_LOCATION"
       
