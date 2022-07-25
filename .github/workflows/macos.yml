@@ -31,6 +31,9 @@ jobs:
 
     - name: clean remote
       run: conan remote clean
+      
+    - name: add conan repo
+      run: conan remote add c23 http://23.234.225.112:8082/artifactory/api/conan/conan
 
     - name: conan config
       run: conan config set general.revisions_enabled=1
