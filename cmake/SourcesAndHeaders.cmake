@@ -2,6 +2,7 @@ set(sources
     src/tmp.cpp
 	src/ship.cpp
 	src/frigate.cpp
+	src/leserver.cpp
 )
 
 set(exe_sources

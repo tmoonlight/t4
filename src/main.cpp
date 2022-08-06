@@ -10,7 +10,7 @@
 #include "project/frigate.h";
 using namespace std;
 
-int main()
+int runtest()
 {
  
 	Frigate dri;
