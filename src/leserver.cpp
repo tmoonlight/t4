@@ -5,6 +5,7 @@
 //for struct evkeyvalq
 #include <sys/queue.h>
 #include <event.h>
+#include "spdlog/spdlog.h"
 //for http
 //#include <evhttp.h>
 #include <event2/http.h>
@@ -17,6 +18,7 @@
 
 //处理模块
 void httpd_handler(struct evhttp_request *req, void *arg) {
+    spdlog::info("logbacked");
     char output[2048] = "\0";
     char tmp[1024];
 
@@ -93,7 +95,7 @@ void signal_handler(int sig) {
     }
 }
 
-int main(int argc, char *argv[]) {
+int startserver(int argc, char *argv[]) {
     //自定义信号处理函数
     signal(SIGHUP, signal_handler);
     signal(SIGTERM, signal_handler);
@@ -147,7 +149,7 @@ int main(int argc, char *argv[]) {
 
     //初始化event API
     event_init();
-
+    spdlog::info("event_init.");
     //创建一个http server
     struct evhttp *httpd;
     httpd = evhttp_start(httpd_option_listen, httpd_option_port);
