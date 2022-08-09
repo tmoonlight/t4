@@ -58,13 +58,17 @@ foreach(file ${test_sources})
         ${${CMAKE_PROJECT_NAME}_TEST_LIB}
     )
   elseif(${CMAKE_PROJECT_NAME}_USE_CATCH2)
-    find_package(Catch2 REQUIRED)
-    target_link_libraries(
-      ${test_name}_Tests
-      PUBLIC
-        Catch2::Catch2
-        ${${CMAKE_PROJECT_NAME}_TEST_LIB}
-    )
+    # find_package(Catch2 REQUIRED)
+     target_link_libraries(
+       ${test_name}_Tests
+       PUBLIC
+         #Catch2::Catch2
+         ${${CMAKE_PROJECT_NAME}_TEST_LIB}
+     )
+    
+
+    message("++++++++++++++${t4_SOURCE_DIR}/include")
+    include_directories(${t4_SOURCE_DIR}/include)
   else()
     message(FATAL_ERROR "Unknown testing library. Please setup your desired unit testing library by using `target_link_libraries`.")  
   endif()

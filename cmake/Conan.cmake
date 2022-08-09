@@ -9,7 +9,7 @@ if(${PROJECT_NAME}_ENABLE_CONAN)
   set(${PROJECT_NAME}_CONAN_REQUIRES 
   #"libuv/1.34.2"
   #"zlib/1.2.12"
-  "poco/1.12.1"
+  #"poco/1.12.1"
   "spdlog/1.9.2"
   #"catch2/3.1.0"
   "libevent/2.1.12"

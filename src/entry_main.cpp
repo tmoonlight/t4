@@ -60,7 +60,8 @@ void listen_keyboard(int timeout)
 
 int main(int argc, char **argv)
 {
-    listen_keyboard(20);
-    printf("keyboard timeout\n");
+    
+    // listen_keyboard(20);
+    // printf("keyboard timeout\n");
     return 0;
 }

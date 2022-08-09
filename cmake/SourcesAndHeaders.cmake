@@ -4,6 +4,8 @@ set(sources
 	src/frigate.cpp
 	src/leserver.cpp
 	src/main.cpp	
+	src/keyboard_event.cpp
+	
 )
 
 
@@ -21,9 +23,9 @@ set(headers
 	include/project/idestroyable.h
 	include/project/def.h
 	include/project/keyboard_event.h
-	include/project/leserver.h
+	#include/project/leserver.h
 	include/project/api.h
-	#include/catch.hpp
+	include/catch.hpp
 )
 
 set(test_sources
