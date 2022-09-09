@@ -10,11 +10,16 @@
 #include "spdlog/spdlog.h"
 using namespace std;
 
+<<<<<<< HEAD
 #ifdef WIN32
 #define bzero(A, B) memset(A, 0, B)
 #endif
 int main()
+=======
+int runtest()
+>>>>>>> c5bf7f20954027e71f7eab222f6c41cc040d62d2
 {
   printf("test");
   return 0;
 }
+

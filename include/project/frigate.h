@@ -9,7 +9,7 @@ class Frigate : Ship
   int testInt;
   int testInt2;
   int testInt3;
-  //int&& testRefInt4; //这个值如果用构造初始化在clang上会出错
+  //int&& testRefInt4; //
   
 
 };
